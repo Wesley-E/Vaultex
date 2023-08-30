@@ -1,0 +1,28 @@
+<table class="organisation-table">
+  <thead>
+  <tr>
+    <th>Organisation Name</th>
+    <th>Organisation Number</th>
+    <th>AddressLine 1</th>
+    <th>AddressLine 2</th>
+    <th>AddressLine3 </th>
+    <th>AddressLine 4</th>
+    <th>Town</th>
+    <th>Postcode</th>
+    <th>Column9</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let organisation of organisations">
+    <td>{{ organisation.organisationName }}</td>
+    <td>{{ organisation.organisationNumber }}</td>
+    <td>{{ organisation.addressLine1 }}</td>
+    <td>{{ organisation.addressLine2 }}</td>
+    <td>{{ organisation.addressLine3 }}</td>
+    <td>{{ organisation.addressLine4 }}</td>
+    <td>{{ organisation.town }}</td>
+    <td>{{ organisation.postcode }}</td>
+    <td>{{ organisation.column9 }}</td>
+  </tr>
+  </tbody>
+</table>

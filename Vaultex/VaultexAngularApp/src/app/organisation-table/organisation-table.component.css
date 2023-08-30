@@ -1,0 +1,15 @@
+.organisation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.organisation-table th,
+.organisation-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.organisation-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
