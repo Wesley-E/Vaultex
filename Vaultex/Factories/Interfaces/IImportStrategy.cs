@@ -1,4 +1,4 @@
-namespace Vaultex.Services.Interfaces;
+namespace Vaultex.Factories.Interfaces;
 
 public interface IImportStrategy
 {

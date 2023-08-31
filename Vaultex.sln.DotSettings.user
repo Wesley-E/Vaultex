@@ -1,0 +1,21 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3719f514_002D4b13_002D40dd_002Dbeea_002Dc2f8d0cee199/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ImportControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Controllers.ImportControllerTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6a22c09b_002D909d_002D4077_002Db55a_002Ddbd76fc24823/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Import_CallsRepositoryMethods_WhenPathIsNotNull" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/m2/Desktop/Job Hunt/Vaultex/Vaultex/Vaultex.UnitTests" Presentation="&amp;lt;Vaultex.UnitTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a530ca45_002Dad57_002D44c7_002Db644_002D7d102763fea5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="EmployeeControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Controllers.EmployeeControllerTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Controllers.ImportControllerTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Controllers.OrganisationControllerTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Factories.ImportStrategies.ImportFromExcelTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Factories.ImportStrategyFactoryTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Repository.PostgresRepositoryTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Services.ImportServiceTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::82280894-19C7-4BCA-B945-AEA16F64722D::net7.0::Vaultex.UnitTests.Services.VaultexDataServiceTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

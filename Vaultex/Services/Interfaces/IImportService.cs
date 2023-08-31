@@ -1,6 +1,6 @@
 using Vaultex.Models;
 
-namespace Vaultex.Services;
+namespace Vaultex.Services.Interfaces;
 
 public interface IImportService
 {

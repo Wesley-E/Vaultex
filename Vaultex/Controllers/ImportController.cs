@@ -1,27 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
+using Vaultex.Models;
+using Vaultex.Services.Interfaces;
+using Vaultex.ValueSets;
 
 namespace Vaultex.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class ImportController : ControllerBase
 {
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<ImportController> _logger;
+    private readonly IImportService _importService;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public ImportController(
+        ILogger<ImportController> logger, 
+        IImportService importService)
     {
         _logger = logger;
+        _importService = importService;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    [HttpPost(Name = "Import")]
+    public IActionResult Import([FromBody] Import import)
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+        try
+        {
+            _importService.Import(import);
+            return Ok($"Successfully completed {Enum.ToObject(typeof(ImportType), import.ImportType)} import");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex);
+        }
+        
     }
 }

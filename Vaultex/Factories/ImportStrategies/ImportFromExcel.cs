@@ -1,19 +1,31 @@
 using OfficeOpenXml;
+using Vaultex.Factories.Interfaces;
 using Vaultex.Models;
 using Vaultex.Repository;
-using Vaultex.Services.Interfaces;
 
-namespace Vaultex.Services.ImportStrategies;
+namespace Vaultex.Factories.ImportStrategies;
 
 public class ImportFromExcel : IImportStrategy
 {
     private string Path { get; set; }
     private readonly IPostgresRepository _repository;
+    private readonly ILogger<ImportFromExcel> _logger;
     
-    public ImportFromExcel(string path, IPostgresRepository repository)
+    public ImportFromExcel(
+        IPostgresRepository repository,
+        string path,
+        ILogger<ImportFromExcel> logger)
     {
-        Path = path;
         _repository = repository;
+        _logger = logger;
+        if (!File.Exists(path))
+        {
+            _logger.LogError("Path for excel import doesn't exist: {path}", path);
+            throw new ArgumentException($"{path} doesn't exist");
+        }
+            
+        Path = path;
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
     }
 
     public void Import()
@@ -22,10 +34,12 @@ public class ImportFromExcel : IImportStrategy
         var employee = ExtractEmployee(Path);
         _repository.ImportOrganisation(organisation);
         _repository.ImportEmployee(employee);
+        _logger.LogInformation("Successfully imported data from: {path}", Path);
     }
 
-    private static IEnumerable<Organisation> ExtractOrganisation(string filePath)
+    private IEnumerable<Organisation> ExtractOrganisation(string filePath)
     {
+        _logger.LogInformation("Extracting organisations from: {path}", filePath);
         using var package = new ExcelPackage(new FileInfo(filePath));
         var result = new List<Organisation>();
         var worksheet = package.Workbook.Worksheets[0];
@@ -49,8 +63,9 @@ public class ImportFromExcel : IImportStrategy
         return result;
     }
     
-    private static IEnumerable<Employee> ExtractEmployee(string filePath)
+    private IEnumerable<Employee> ExtractEmployee(string filePath)
     {
+        _logger.LogInformation("Extracting employees from: {path}", filePath);
         using var package = new ExcelPackage(new FileInfo(filePath));
         var result = new List<Employee>();
         var worksheet = package.Workbook.Worksheets[1];
