@@ -30,6 +30,7 @@ public class ImportController : ControllerBase
         }
         catch (Exception ex)
         {
+            _logger.LogError("Unable to import to database {ex}", ex);
             return BadRequest("Unable to import into database");
         }
         
