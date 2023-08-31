@@ -27,10 +27,11 @@ public class ImportFromExcelTests
     [Fact]
     public void Import_ThrowsArgumentException_WhenPathIsNull()
     {
-        Assert.Throws<ArgumentException>(() => new ImportFromExcel(_repository, _logger)
+        var excelImport = new ImportFromExcel(_repository, _logger)
         {
             Path = "filePath"
-        });
+        };
+        Assert.Throws<ArgumentException>(() => excelImport.Import());
     }
 
     [Fact]

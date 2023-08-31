@@ -38,11 +38,11 @@ public class ImportControllerTests
     public void Import_ReturnsBadRequestObjectResult_WhenExceptionOccurs()
     {
         var import = new Import { ImportType = (int)ImportType.Excel };
-        _importService.When(i => i.Import(import)).Do(x => { throw new Exception("Sample exception"); });
+        _importService.When(i => i.Import(import)).Do(x => throw new Exception("Sample exception"));
         
         var result = _sut.Import(import);
         
         var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-        Assert.IsType<Exception>(badRequestResult.Value);
+        Assert.Equal("Unable to import into database", badRequestResult.Value);
     }
 }
