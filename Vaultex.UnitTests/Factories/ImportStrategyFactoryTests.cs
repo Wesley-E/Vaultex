@@ -28,7 +28,7 @@ public class ImportStrategyFactoryTests
     [Fact]
     public void CreateImport_ReturnsImportFromExcel_WhenImportTypeIsExcel()
     {
-        var import = new Import { ImportType = ImportType.Excel, fileName = FilePath };
+        var import = new Import { ImportType = ImportType.Excel, FileName = FilePath };
 
         var result = _sut.CreateImport(import);
 
@@ -38,7 +38,7 @@ public class ImportStrategyFactoryTests
     [Fact]
     public void CreateImport_ThrowsArgumentOutOfRangeException_WhenImportTypeIsUnknown()
     {
-        var import = new Import { ImportType = (ImportType)999, fileName = "sample.xlsx" };
+        var import = new Import { ImportType = (ImportType)999, FileName = "sample.xlsx" };
 
         Assert.Throws<ArgumentOutOfRangeException>(() => _sut.CreateImport(import));
     }

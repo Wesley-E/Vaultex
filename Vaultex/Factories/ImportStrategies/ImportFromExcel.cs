@@ -7,29 +7,29 @@ namespace Vaultex.Factories.ImportStrategies;
 
 public class ImportFromExcel : IImportStrategy
 {
-    private string Path { get; set; }
+    public string Path { get; set; }
     private readonly IPostgresRepository _repository;
     private readonly ILogger<ImportFromExcel> _logger;
     
     public ImportFromExcel(
         IPostgresRepository repository,
-        string path,
         ILogger<ImportFromExcel> logger)
     {
         _repository = repository;
         _logger = logger;
-        if (!File.Exists(path))
-        {
-            _logger.LogError("Path for excel import doesn't exist: {path}", path);
-            throw new ArgumentException($"{path} doesn't exist");
-        }
-            
-        Path = path;
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
     }
 
     public void Import()
     {
+        if (Path is null)
+            throw new ArgumentException($"{Path} hasn't been set"); 
+        
+        if (!File.Exists(Path))
+        {
+            _logger.LogError("Path for excel import doesn't exist: {path}", Path);
+            throw new ArgumentException($"{Path} doesn't exist");
+        }
         var organisation = ExtractOrganisation(Path);
         var employee = ExtractEmployee(Path);
         _repository.ImportOrganisation(organisation);

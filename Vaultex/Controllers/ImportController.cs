@@ -30,7 +30,7 @@ public class ImportController : ControllerBase
         }
         catch (Exception ex)
         {
-            return BadRequest(ex);
+            return BadRequest("Unable to import into database");
         }
         
     }

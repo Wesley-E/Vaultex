@@ -18,13 +18,19 @@ public class ImportFromExcelTests
     {
         _repository = Substitute.For<IPostgresRepository>();
         _logger = Substitute.For<ILogger<ImportFromExcel>>();
-        _sut = new ImportFromExcel(_repository, FilePath, _logger);
+        _sut = new ImportFromExcel(_repository, _logger)
+        {
+            Path = FilePath
+        };
     }
 
     [Fact]
     public void Import_ThrowsArgumentException_WhenPathIsNull()
     {
-        Assert.Throws<ArgumentException>(() => new ImportFromExcel(_repository, "filePath", _logger));
+        Assert.Throws<ArgumentException>(() => new ImportFromExcel(_repository, _logger)
+        {
+            Path = "filePath"
+        });
     }
 
     [Fact]

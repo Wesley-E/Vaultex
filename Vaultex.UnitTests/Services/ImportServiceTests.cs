@@ -21,7 +21,7 @@ public class ImportServiceTests
     [Fact]
     public void Import_CallsCreateImportAndImportMethods()
     {
-        var import = new Import { ImportType = ImportType.Excel, fileName = "sample.xlsx" };
+        var import = new Import { ImportType = ImportType.Excel, FileName = "sample.xlsx" };
         var importStrategy = Substitute.For<IImportStrategy>();
         _importStrategyFactory.CreateImport(import).Returns(importStrategy);
 

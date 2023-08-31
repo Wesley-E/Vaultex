@@ -26,7 +26,7 @@ public class ImportStrategyFactory : IImportStrategyFactory
     {
         return import.ImportType switch
         {
-            ImportType.Excel => CreateExcelImport(import.fileName),
+            ImportType.Excel => CreateExcelImport(import.FileName),
             _ => throw new ArgumentOutOfRangeException($"Unkown import type specified: {import.ImportType}")
         };
     }
@@ -34,7 +34,10 @@ public class ImportStrategyFactory : IImportStrategyFactory
     private IImportStrategy CreateExcelImport(string path)
     {
         _logger.LogInformation("Creating Excel Import strategy");
-        var importFromExcel = new ImportFromExcel(_repository, path, _loggerFactory.CreateLogger<ImportFromExcel>());
+        var importFromExcel = new ImportFromExcel(_repository, _loggerFactory.CreateLogger<ImportFromExcel>())
+        {
+            Path = path
+        };
         return importFromExcel;
     }
 }
